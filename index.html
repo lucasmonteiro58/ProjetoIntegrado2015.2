@@ -1,0 +1,1984 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Um desfile de conscientização</title>
+</head>
+<body>
+
+<canvas id="quadro" width="800" height="600"></canvas>
+<script src="./createjs-2015.05.21.min.js"></script>
+<script >
+	
+	var stage = new createjs.Stage("quadro");
+
+	var maria = new createjs.SpriteSheet({
+		"animations": {
+			"parado": [0],
+			"tocando": [0, 2]
+		},
+		"images": ["./bonecos/maria/maria.png"],
+		"frames": {
+			"height": 739,
+			"width": 1017,
+			"regX": 508,
+			"regY": 369
+		}
+	});
+	var jose = new createjs.SpriteSheet({
+		"animations": {
+			"parado": [0],
+			"tocando": [0, 2]
+		},
+		"images": ["./bonecos/ze/ze.png"],
+		"frames": {
+			"height": 730,
+			"width": 1017,
+			"regX": 508,
+			"regY": 365
+		}
+	});
+
+	var mariaa = new createjs.Sprite(maria);
+	var ze = new createjs.Sprite(jose);
+	mariaa.scaleX = 0.25;
+	mariaa.scaleY = 0.25;
+	mariaa.gotoAndPlay("tocando");
+	ze.scaleX = 0.2;
+	ze.scaleY = 0.2;
+	ze.gotoAndPlay("tocando");
+
+
+	var boneco = new createjs.Bitmap("./bonecos/bonequim.png");
+	boneco.x = 0;
+	boneco.y = 0;
+	var boneca = new createjs.Bitmap("./bonecos/bateraaa.png");
+	boneco.x = 0;
+	boneco.y = 0;
+
+	var txtmaria = new createjs.Bitmap("./bonecos/txtmaria.png");
+	txtmaria.x = 50;
+	txtmaria.y = 170;
+	var txtze = new createjs.Bitmap("./bonecos/txtze.png");
+	txtze.x = 50;
+	txtze.y = 170;
+
+	var blur = new createjs.Bitmap("./telabase/blur.png");
+	blur.x = 0;
+	blur.y = 0;
+
+
+
+	//________________________________________________________TEXTOS
+	var txtbipolar = new createjs.Bitmap("./alas/doencas/txtbipolar.png");
+	txtbipolar.x = 50;
+	txtbipolar.y = 170;
+	var txtdepressao = new createjs.Bitmap("./alas/doencas/txtdepressao.png");
+	txtdepressao.x = 50;
+	txtdepressao.y = 170;
+	var txtesq = new createjs.Bitmap("./alas/doencas/txtesq.png");
+	txtesq.x = 50;
+	txtesq.y = 170;
+	var txtpanico = new createjs.Bitmap("./alas/doencas/txtpanico.png");
+	txtpanico.x = 50;
+	txtpanico.y = 170;
+	var txttoc = new createjs.Bitmap("./alas/doencas/txttoc.png");
+	txttoc.x = 50;
+	txttoc.y = 170;
+
+
+	var txtroupas = new createjs.Bitmap("./colabore/roupas.png");
+	txtroupas.regX = 175;
+	txtroupas.regY = 183;
+	txtroupas.x = 400;
+	txtroupas.y = 505;
+	var txtfinanceira = new createjs.Bitmap("./colabore/financeira.png");
+	txtfinanceira.regX = 175;
+	txtfinanceira.regY = 183;
+	txtfinanceira.x = 450;
+	txtfinanceira.y = 520;
+	var txtvoluntarie = new createjs.Bitmap("./colabore/voluntarie.png");
+	txtvoluntarie.regX = 175;
+	txtvoluntarie.regY = 183;
+	txtvoluntarie.x = 400;
+	txtvoluntarie.y = 510;
+
+	var txtbloco1 = new createjs.Bitmap("./bloco/txtobloco1.png");
+	txtbloco1.x = 394;
+	txtbloco1.y = 221;
+	txtbloco1.scaleX = 0.9;
+	txtbloco1.scaleY = 0.9;
+	var txtbloco2 = new createjs.Bitmap("./bloco/txtobloco2.png");
+
+
+	var txtala1 = new createjs.Bitmap("./alas/txtpacientes.png");
+	var txtala2 = new createjs.Bitmap("./alas/txtantigos.png");
+	var txtala3 = new createjs.Bitmap("./alas/txtdoencas.png");
+	var txtala4 = new createjs.Bitmap("./alas/txtreforma.png");
+
+	txtala1.x = 374;
+	txtala1.y = 221;
+
+	txtala1.scaleX = 0.9;
+	txtala1.scaleY = 0.9;
+
+	txtala2.x = 374;
+	txtala2.y = 221;
+
+	txtala2.scaleX = 0.9;
+	txtala2.scaleY = 0.9;
+
+	txtala3.x = 374;
+	txtala3.y = 221;
+
+	txtala3.scaleX = 0.9;
+	txtala3.scaleY = 0.9;
+
+	txtala4.x = 374;
+	txtala4.y = 221;
+
+	txtala4.scaleX = 0.9;
+	txtala4.scaleY = 0.9;
+
+
+
+	var lbl1 = new createjs.Bitmap("./alas/pacientee.png");
+	var lbl2 = new createjs.Bitmap("./alas/reformaa.png");
+	var lbl3 = new createjs.Bitmap("./alas/transtornoo.png");
+	var lbl4 = new createjs.Bitmap("./alas/tratamentoo.png");
+	var lbl5 = new createjs.Bitmap("./alas/paci.png");
+	var lbl6 = new createjs.Bitmap("./alas/ref.png");
+	var lbl7 = new createjs.Bitmap("./alas/trans.png");
+	var lbl8 = new createjs.Bitmap("./alas/trat.png");
+
+
+	lbl1.x = 114;
+	lbl1.y = 456;
+	lbl2.x = 276;
+	lbl2.y = 456;
+	lbl3.x = 435;
+	lbl3.y = 456;
+	lbl4.x = 594;
+	lbl4.y = 456;
+	lbl5.x = 175;
+	lbl5.y = 516;
+	lbl6.x = 175;
+	lbl6.y = 516;
+	lbl7.x = 175;
+	lbl7.y = 516;
+	lbl8.x = 175;
+	lbl8.y = 516;
+
+	//___________________________________________________________ IMAGENS _______________________________________________________
+
+	//inicio
+	var fundoinicio = new createjs.Bitmap("./inicio/bgarquibancada.png");
+	var confete = new createjs.Bitmap("./inicio/confete.png");
+	var doidoscarnaval = new createjs.Bitmap("./inicio/doidosporcarnaval.png");
+	var logoinicio = new createjs.Bitmap("./inicio/logodoidosporcarnaval.png");
+	var conscientizazao = new createjs.Bitmap("./inicio/umdesfiledeconscientizacao.png");
+
+	//tela base
+	var fundo = new createjs.Bitmap("./telabase/fundo.jpg");
+	var logo = new createjs.Bitmap("./telabase/logoquintessencia.png");
+
+	//funções
+	var fecha = new createjs.Bitmap("./funcoes/fechar.png");
+	var fechap = new createjs.Bitmap("./funcoes/fechar.png");
+	var botaosom = new createjs.SpriteSheet({
+		"animations": {
+			"csom": [0],
+			"ssom": [1]
+		},
+		"images": ["./funcoes/som.png"],
+		"frames": {
+			"height": 25,
+			"width": 25,
+			"regX": 0,
+			"regY": 0
+		}
+	});
+	var btsom = new createjs.Sprite(botaosom);
+
+	//abas
+	var abas = new createjs.Bitmap("./info/telaabasmenu.png");
+
+	//sobre o trabalho
+	var sobre = new createjs.Bitmap("./info/telacompleta.png");
+
+	//colabore
+	var ajudaf = new createjs.Bitmap("./colabore/ajudafinanceira.png");
+	var barrat = new createjs.Bitmap("./colabore/texto.png");
+	var colaboree = new createjs.Bitmap("./colabore/colabore.png");
+	var doeacess = new createjs.Bitmap("./colabore/doeacessorios.png");
+	var voluntarie = new createjs.Bitmap("./colabore/sevoluntarie.png");
+
+	//alas/placeholder
+	var pa11 = new createjs.Bitmap("./alas/ala1.png");
+	var pa12 = new createjs.Bitmap("./alas/ala2.png");
+	var pa13 = new createjs.Bitmap("./alas/ala3.png");
+	var pa14 = new createjs.Bitmap("./alas/ala4.png");
+	var pa21 = new createjs.Bitmap("./alas/pacientes.png");
+	var pa22 = new createjs.Bitmap("./alas/tratamentos.png");
+	var pa23 = new createjs.Bitmap("./alas/transtornos.png");
+	var pa24 = new createjs.Bitmap("./alas/reforma.png");
+	var nomea = new createjs.Bitmap("./alas/alas.png");
+	var esq = new createjs.Bitmap("./funcoes/esquerda.png");
+	var dir = new createjs.Bitmap("./funcoes/direita.png");
+
+	//bloco / placeholder
+	var pb1 = new createjs.Bitmap("./bloco/1.jpg");
+	var pb2 = new createjs.Bitmap("./bloco/2.jpg");
+	var pb3 = new createjs.Bitmap("./bloco/3.jpg");
+	var pb4 = new createjs.Bitmap("./bloco/4.jpg");
+	var pb5 = new createjs.Bitmap("./bloco/5.png");
+	var obloco = new createjs.Bitmap("./bloco/obloco.png");
+	//vetor das imagens
+	var pbs = [pb1, pb2, pb3, pb4, pb5];
+
+	var pbcontrole = 0;
+
+
+
+	//importa imagens e animações do menu
+	var bloco = new createjs.SpriteSheet({
+		"animations": {
+			"normal": [0],
+			"over": [1]
+		},
+		"images": ["./menu/bloco.png"],
+		"frames": {
+			"height": 22,
+			"width": 49,
+			"regX": 0,
+			"regY": 0
+		}
+	});
+	var alas = new createjs.SpriteSheet({
+		"animations": {
+			"normal": [0],
+			"over": [1]
+		},
+		"images": ["./menu/alas.png"],
+		"frames": {
+			"height": 21,
+			"width": 27,
+			"regX": 0,
+			"regY": 0
+		}
+	});
+	var colabore = new createjs.SpriteSheet({
+		"animations": {
+			"normal": [0],
+			"over": [1]
+		},
+		"images": ["./menu/colabore.png"],
+		"frames": {
+			"height": 23,
+			"width": 56,
+			"regX": 0,
+			"regY": 0
+		}
+	});
+	var btbloco = new createjs.Sprite(bloco);
+	var btalas = new createjs.Sprite(alas);
+	var btcolabore = new createjs.Sprite(colabore);
+	var abasmenu = new createjs.Bitmap("./menu/telaabasmenu.png");
+	var menu = new createjs.Bitmap("./menu/menu.png");
+	var setamenu = new createjs.Bitmap("./menu/setamenu.png");
+	var menuaberto = new createjs.Bitmap("./menu/fundomenuaberto.png");
+	//_____________________________________________________________________________________________________________________________________
+
+	//]____________________________________bonequinhos lá________________________________________________________________________
+
+
+	//doenças
+	var ansiedaded = new createjs.SpriteSheet({
+		"animations": {
+			"parado": [0],
+			"tocando": [0, 3]
+		},
+		"images": ["./alas/doencas/ansiedade/ansiedade.png"],
+		"frames": {
+			"height": 728,
+			"width": 542,
+			"regX": 271,
+			"regY": 364
+		}
+	});
+
+	var bipolaridadeamad = new createjs.SpriteSheet({
+		"animations": {
+			"parado": [0],
+			"tocando": [0, 3]
+		},
+		"images": ["./alas/doencas/bama/ba.png"],
+		"frames": {
+			"height": 739,
+			"width": 1017,
+			"regX": 508,
+			"regY": 369
+		}
+	});
+
+	var bipolaridadeazuld = new createjs.SpriteSheet({
+		"animations": {
+			"parado": [0],
+			"tocando": [0, 3]
+		},
+		"images": ["./alas/doencas/bazul/ba.png"],
+		"frames": {
+			"height": 739,
+			"width": 1021,
+			"regX": 510,
+			"regY": 369
+		}
+	});
+
+	var depressaod = new createjs.SpriteSheet({
+		"animations": {
+			"parado": [0],
+			"tocando": [0, 3]
+		},
+		"images": ["./alas/doencas/depressao/depressao.png"],
+		"frames": {
+			"height": 739,
+			"width": 1017,
+			"regX": 508,
+			"regY": 369
+		}
+	});
+
+	var esquizoagogod = new createjs.SpriteSheet({
+		"animations": {
+			"parado": [0],
+			"tocando": [0, 3]
+		},
+		"images": ["./alas/doencas/esqagogo/esquiz.png"],
+		"frames": {
+			"height": 739,
+			"width": 1017,
+			"regX": 508,
+			"regY": 369
+		}
+	});
+
+	var esquizorepiqued = new createjs.SpriteSheet({
+		"animations": {
+			"parado": [0],
+			"tocando": [0, 3]
+		},
+		"images": ["./alas/doencas/esqrepique/esss.png"],
+		"frames": {
+			"height": 739,
+			"width": 1017,
+			"regX": 508,
+			"regY": 369
+		}
+	});
+
+	var panicod = new createjs.SpriteSheet({
+		"animations": {
+			"parado": [0],
+			"tocando": [0, 3]
+		},
+		"images": ["./alas/doencas/spanico/sindrome.png"],
+		"frames": {
+			"height": 739,
+			"width": 1017,
+			"regX": 508,
+			"regY": 369
+		}
+	});
+	var ans = new createjs.Sprite(ansiedaded);
+	ans.gotoAndPlay("tocando");
+	var bama = new createjs.Sprite(bipolaridadeamad);
+	bama.gotoAndPlay("tocando");
+	var bazul = new createjs.Sprite(bipolaridadeazuld);
+	bazul.gotoAndPlay("tocando");
+	var dep = new createjs.Sprite(depressaod);
+	dep.gotoAndPlay("tocando");
+	var esqa = new createjs.Sprite(esquizoagogod);
+	esqa.gotoAndPlay("tocando");
+	var esqr = new createjs.Sprite(esquizorepiqued);
+	esqr.gotoAndPlay("tocando");
+	var sp = new createjs.Sprite(panicod);
+	sp.gotoAndPlay("tocando");
+	ans.scaleX = 0.2;
+	ans.scaleY = 0.2;
+	bama.scaleX = 0.2;
+	bama.scaleY = 0.2;
+	bazul.scaleY = 0.2;
+	bazul.scaleX = 0.2;
+	dep.scaleY = 0.2;
+	dep.scaleX = 0.2;
+	esqa.scaleY = 0.2;
+	esqa.scaleX = 0.2;
+	esqr.scaleY = 0.2;
+	esqr.scaleX = 0.2;
+	sp.scaleY = 0.2;
+	sp.scaleX = 0.2;
+
+	//monstros
+	var bipolarm = new createjs.SpriteSheet({
+		"animations": {
+			"parado": [0],
+			"tocando": [0, 1]
+		},
+		"images": ["./alas/monstros/bipolar/bipolar.png"],
+		"frames": {
+			"height": 739,
+			"width": 1017,
+			"regX": 508,
+			"regY": 369
+		}
+	});
+	var depressaom = new createjs.SpriteSheet({
+		"animations": {
+			"parado": [0],
+			"tocando": [0, 2]
+		},
+		"images": ["./alas/monstros/depressao/depressao.png"],
+		"frames": {
+			"height": 283,
+			"width": 308,
+			"regX": 154,
+			"regY": 141
+		}
+	});
+	var esquizom = new createjs.SpriteSheet({
+		"animations": {
+			"parado": [0],
+			"tocando": [0, 3]
+		},
+		"images": ["./alas/monstros/esquizofrenia/esq.png"],
+		"frames": {
+			"height": 739,
+			"width": 1017,
+			"regX": 595,
+			"regY": 369
+		}
+	});
+	var panicom = new createjs.SpriteSheet({
+		"animations": {
+			"parado": [0],
+			"tocando": [0, 7]
+		},
+		"images": ["./alas/monstros/spanico/sindromep.png"],
+		"frames": {
+			"height": 744,
+			"width": 1024,
+			"regX": 512,
+			"regY": 372
+		}
+	});
+	var tocompm = new createjs.SpriteSheet({
+		"animations": {
+			"parado": [0],
+			"tocando": [0, 3]
+		},
+		"images": ["./alas/monstros/toc/toc.png"],
+		"frames": {
+			"height": 739,
+			"width": 1017,
+			"regX": 508,
+			"regY": 369
+		}
+	});
+	var bpm = new createjs.Sprite(bipolarm);
+	bpm.gotoAndPlay("tocando");
+	var dpm = new createjs.Sprite(depressaom);
+	dpm.gotoAndPlay("tocando");
+	var esqm = new createjs.Sprite(esquizom);
+	esqm.gotoAndPlay("tocando");
+	var spm = new createjs.Sprite(panicom);
+	spm.gotoAndPlay("tocando");
+	var tocm = new createjs.Sprite(tocompm);
+	tocm.gotoAndPlay("tocando");
+	bpm.scaleX = 0.2;
+	bpm.scaleY = 0.2;
+	dpm.scaleX = 0.2;
+	dpm.scaleY = 0.2;
+	esqm.scaleY = 0.2;
+	esqm.scaleX = 0.2;
+	spm.scaleY = 0.2;
+	spm.scaleX = 0.2;
+	tocm.scaleY = 0.2;
+	tocm.scaleX = 0.2;
+
+	//reforma
+	var carroale = new createjs.SpriteSheet({
+		"animations": {
+			"parado": [0],
+			"tocando": [0, 1]
+		},
+		"images": ["./alas/reforma/carro/lady.png"],
+		"frames": {
+			"height": 1109,
+			"width": 1479,
+			"regX": 739,
+			"regY": 554
+		}
+	});
+	var enfermeira = new createjs.SpriteSheet({
+		"animations": {
+			"parado": [0],
+			"tocando": [0, 3]
+		},
+		"images": ["./alas/reforma/enfermeira/enfermeira.png"],
+		"frames": {
+			"height": 739,
+			"width": 1017,
+			"regX": 508,
+			"regY": 369
+		}
+	});
+	var franco = new createjs.SpriteSheet({
+		"animations": {
+			"parado": [0],
+			"tocando": [0, 3]
+		},
+		"images": ["./alas/reforma/franco/franco.png"],
+		"frames": {
+			"height": 333,
+			"width": 187,
+			"regX": 93,
+			"regY": 166
+		}
+	});
+	var medico = new createjs.SpriteSheet({
+		"animations": {
+			"parado": [0],
+			"tocando": [0, 1]
+		},
+		"images": ["./alas/reforma/medico/medico.png"],
+		"frames": {
+			"height": 739,
+			"width": 1017,
+			"regX": 508,
+			"regY": 369
+		}
+	});
+	var paulo = new createjs.SpriteSheet({
+		"animations": {
+			"parado": [0],
+			"tocando": [0, 1]
+		},
+		"images": ["./alas/reforma/paulo/paulo.png"],
+		"frames": {
+			"height": 337,
+			"width": 189,
+			"regX": 94,
+			"regY": 168
+		}
+	});
+	var carro = new createjs.Sprite(carroale);
+	carro.gotoAndPlay("tocando");
+	var enf = new createjs.Sprite(enfermeira);
+	enf.gotoAndPlay("tocando");
+	var enf2 = new createjs.Sprite(enfermeira);
+	enf2.gotoAndPlay("tocando");
+	var frc = new createjs.Sprite(franco);
+	frc.gotoAndPlay("tocando");
+	var md = new createjs.Sprite(medico);
+	md.gotoAndPlay("tocando");
+	var pl = new createjs.Sprite(paulo);
+	pl.gotoAndPlay("tocando");
+	carro.scaleX = 0.35;
+	carro.scaleY = 0.35;
+	frc.scaleX = 0.45;
+	frc.scaleY = 0.45;
+	md.scaleY = 0.2;
+	md.scaleX = 0.2;
+	pl.scaleY = 0.45;
+	pl.scaleX = 0.45;
+	enf.scaleY = 0.2;
+	enf.scaleX = 0.2;
+	enf2.scaleY = 0.2;
+	enf2.scaleX = 0.2;
+
+	//tratamentos
+	var camisadeforca = new createjs.SpriteSheet({
+		"animations": {
+			"parado": [0],
+			"tocando": [0, 3]
+		},
+		"images": ["./alas/tratamentos/camisa/camisa.png"],
+		"frames": {
+			"height": 1087,
+			"width": 513,
+			"regX": 256,
+			"regY": 543
+		}
+	});
+	var eletrochoque = new createjs.SpriteSheet({
+		"animations": {
+			"parado": [0],
+			"tocando": [0, 3]
+		},
+		"images": ["./alas/tratamentos/eletrochoque/eeee.png"],
+		"frames": {
+			"height": 739,
+			"width": 658,
+			"regX": 329,
+			"regY": 369
+		}
+	});
+	var lobotomia = new createjs.SpriteSheet({
+		"animations": {
+			"parado": [0],
+			"tocando": [0, 3]
+		},
+		"images": ["./alas/tratamentos/lobotomia/lobo.png"],
+		"frames": {
+			"height": 1087,
+			"width": 899,
+			"regX": 449,
+			"regY": 543
+		}
+	});
+	var camforca = new createjs.Sprite(camisadeforca);
+	camforca.gotoAndPlay("tocando");
+	var eletro = new createjs.Sprite(eletrochoque);
+	eletro.gotoAndPlay("tocando");
+	var lobo = new createjs.Sprite(lobotomia);
+	lobo.gotoAndPlay("tocando");
+	camforca.scaleX = 0.15;
+	camforca.scaleY = 0.15;
+	eletro.scaleX = 0.2;
+	eletro.scaleY = 0.2;
+	lobo.scaleY = 0.15;
+	lobo.scaleX = 0.15;
+
+	var camforca1 = new createjs.Sprite(camisadeforca);
+	camforca1.gotoAndPlay("tocando");
+	var eletro1 = new createjs.Sprite(eletrochoque);
+	eletro1.gotoAndPlay("tocando");
+	var lobo1 = new createjs.Sprite(lobotomia);
+	lobo1.gotoAndPlay("tocando");
+	camforca1.scaleX = 0.15;
+	camforca1.scaleY = 0.15;
+	eletro1.scaleX = 0.2;
+	eletro1.scaleY = 0.2;
+	lobo1.scaleY = 0.15;
+	lobo1.scaleX = 0.15;
+
+	var camforca2 = new createjs.Sprite(camisadeforca);
+	camforca2.gotoAndPlay("tocando");
+	var eletro2 = new createjs.Sprite(eletrochoque);
+	eletro2.gotoAndPlay("tocando");
+	var lobo2 = new createjs.Sprite(lobotomia);
+	lobo2.gotoAndPlay("tocando");
+	camforca2.scaleX = 0.15;
+	camforca2.scaleY = 0.15;
+	eletro2.scaleX = 0.2;
+	eletro2.scaleY = 0.2;
+	lobo2.scaleY = 0.15;
+	lobo2.scaleX = 0.15;
+
+
+	var popupdesfile = new createjs.Bitmap("./alas/popup.png");
+
+	//_________________________________________________________________________________________________________________________
+
+
+	//_______________________________________________ SONS _____________________________________________________________________
+
+
+	var caminho = "./musicas/";
+	var sons = [
+		{id: "cuica", src: "cuica.wav", data: 1},
+		{id: "m4", src: "chocalho.wav", data: 1},
+		{id: "m5", src: "essa5.wav", data: 1},
+		{id: "agogo", src: "agogo1.mp3", data: 1},
+		{id: "caixa", src: "caixa1.mp3", data: 1},
+		{id: "repique", src: "repique1.mp3", data: 1},
+		{id: "surdo", src: "surdo.wav", data: 1}
+	];
+
+	createjs.Sound.addEventListener("fileload", toca);
+	createjs.Sound.registerSounds(sons, caminho);
+
+	var cc;
+	var mm1;
+	var mm2;
+	var mm3;
+	var mm4;
+	var mm5;
+	var mm6;
+
+	function toca(target){
+		cc = createjs.Sound.play("cuica", {interrupt: createjs.Sound.INTERRUPT_ANY, loop:-1});
+		mm1 = createjs.Sound.play("m4", {interrupt: createjs.Sound.INTERRUPT_ANY, loop:-1});
+		mm2 = createjs.Sound.play("m5", {interrupt: createjs.Sound.INTERRUPT_ANY, loop:-1});
+		mm3 = createjs.Sound.play("agogo", {interrupt: createjs.Sound.INTERRUPT_ANY, loop:-1});
+		mm4 = createjs.Sound.play("caixa", {interrupt: createjs.Sound.INTERRUPT_ANY, loop:-1});
+		mm5 = createjs.Sound.play("repique", {interrupt: createjs.Sound.INTERRUPT_ANY, loop:-1});
+		mm6 = createjs.Sound.play("surdo", {interrupt: createjs.Sound.INTERRUPT_ANY, loop:-1});
+	}
+
+	//controla os sons da bateria
+	var c = true;
+	var m1 = true;
+	var m2 = true;
+	var m3 = true;
+	var m4 = true;
+	var m5 = true;
+	var m6 = true;
+	var geral = true;
+
+	function somgeral(){
+		if(geral == true){
+			cc.play();
+			mm1.play();
+			mm2.play();
+			mm3.play();
+			mm4.play();
+			mm5.play();
+			mm6.play();
+			som();
+		}
+		else{
+			cc.stop();
+			mm1.stop();
+			mm2.stop();
+			mm3.stop();
+			mm4.stop();
+			mm5.stop();
+			mm6.stop();
+		}
+	}
+
+	//verifica os sons da bateria
+	function som(){
+		if (c == false)
+			cc.paused = true;
+		else
+			cc.paused = false;
+		if (m1 == false)
+			mm1.paused = true;
+		else
+			mm1.paused = false;
+		if (m2 == false)
+			mm2.paused = true;
+		else
+			mm2.paused = false;
+		if (m3 == false)
+			mm3.paused = true;
+		else
+			mm3.paused = false;
+		if (m4 == false)
+			mm4.paused = true;
+		else
+			mm4.paused = false;
+		if (m5 == false)
+			mm5.paused = true;
+		else
+			mm5.paused = false;
+		if (m6 == false)
+			mm6.paused = true;
+		else
+			mm6.paused = false;
+	}
+
+
+	//funções de controle das musicas pelos bonecos
+
+	ans.addEventListener("dblclick", function(){
+											if (m2 == false){
+												m2 = true;
+												ans.gotoAndPlay("tocando");
+											}
+											else{
+												m2 = false;
+												ans.gotoAndPlay("parado");
+											}
+										});
+	ans.addEventListener("mouseover",  function(){
+											ans.cursor = "copy";
+										});
+	ans.addEventListener("mousedown", function(){
+											textobloco = 15;
+											if (popd == false)
+												popd = true;
+										});	
+	bama.addEventListener("dblclick", function(){
+											if (c == false){
+												c = true;
+												bama.gotoAndPlay("tocando");
+											}
+											else{
+												c = false;
+												bama.gotoAndPlay("parado");
+											}
+										});
+	bama.addEventListener("mouseover",  function(){
+											bama.cursor = "copy";
+										});
+	bama.addEventListener("mousedown", function(){
+											textobloco = 11;
+											if (popd == false)
+												popd = true;
+										});	
+	bazul.addEventListener("dblclick", function(){
+											if (m5 == false){
+												m5 = true;
+												bazul.gotoAndPlay("tocando");
+											}
+											else{
+												m5 = false;
+												bazul.gotoAndPlay("parado");
+											}
+										});
+	bazul.addEventListener("mouseover",  function(){
+											bazul.cursor = "copy";
+										});
+	bazul.addEventListener("mousedown", function(){
+											textobloco = 11;
+											if (popd == false)
+												popd = true;
+										});	
+	dep.addEventListener("dblclick", function(){
+											if (m4 == false){
+												m4 = true;
+												dep.gotoAndPlay("tocando");
+											}
+											else{
+												m4 = false;
+												dep.gotoAndPlay("parado");
+											}
+										});
+	dep.addEventListener("mouseover",  function(){
+											dep.cursor = "copy";
+										});
+	dep.addEventListener("mousedown", function(){
+											textobloco = 12;
+											if (popd == false)
+												popd = true;
+										});	
+	esqa.addEventListener("dblclick", function(){
+											if (m3 == false){
+												m3 = true;
+												esqa.gotoAndPlay("tocando");
+											}
+											else{
+												m3 = false;
+												esqa.gotoAndPlay("parado");
+											}
+										});
+	esqa.addEventListener("mouseover",  function(){
+											esqa.cursor = "copy";
+										});
+	esqa.addEventListener("mousedown", function(){
+											textobloco = 13;
+											if (popd == false)
+												popd = true;
+										});	
+	esqr.addEventListener("dblclick", function(){
+											if (m6 == false){
+												m6 = true;
+												esqr.gotoAndPlay("tocando");
+											}
+											else{
+												m6 = false;
+												esqr.gotoAndPlay("parado");
+											}
+										});
+	esqr.addEventListener("mouseover",  function(){
+											esqr.cursor = "copy";
+										});
+	esqr.addEventListener("mousedown", function(){
+											textobloco = 13;
+											if (popd == false)
+												popd = true;
+										});	
+	sp.addEventListener("dblclick", function(){
+											if (m1 == false){
+												m1 = true;
+												sp.gotoAndPlay("tocando");
+											}
+											else{
+												m1 = false;
+												sp.gotoAndPlay("parado");
+											}
+										});
+	sp.addEventListener("mouseover",  function(){
+											sp.cursor = "copy";
+										});
+	sp.addEventListener("mousedown", function(){
+											textobloco = 14;
+											if (popd == false)
+												popd = true;
+										});	
+
+	/*//bpm.addEventListener("mouseover",  function(){
+	//										bpm.cursor = "pointer";
+	//									});
+	//bpm.addEventListener("mousedown", function(){
+											textobloco = 11;
+											if (popd == false)
+												popd = true;
+										});	
+	dpm.addEventListener("mouseover",  function(){
+											dpm.cursor = "pointer";
+										});
+	dpm.addEventListener("mousedown", function(){
+											textobloco = 12;
+											if (popd == false)
+												popd = true;
+										});	
+	esqm.addEventListener("mouseover",  function(){
+											esqm.cursor = "pointer";
+										});
+	esqm.addEventListener("mousedown", function(){
+											textobloco = 13;
+											if (popd == false)
+												popd = true;
+										});	
+	spm.addEventListener("mouseover",  function(){
+											spm.cursor = "pointer";
+										});
+	spm.addEventListener("mousedown", function(){
+											textobloco = 14;
+											if (popd == false)
+												popd = true;
+										});	
+	tocm.addEventListener("mouseover",  function(){
+											tocm.cursor = "pointer";
+										});
+	tocm.addEventListener("mousedown", function(){
+											textobloco = 15;
+											if (popd == false)
+												popd = true;
+										});	*/
+
+	ze.addEventListener("mouseover",  function(){
+											ze.cursor = "pointer";
+										});
+	ze.addEventListener("mousedown", function(){
+											textobloco = 2;
+											if (popd == false)
+												popd = true;
+										});	
+	mariaa.addEventListener("mouseover",  function(){
+											mariaa.cursor = "pointer";
+										});
+	mariaa.addEventListener("mousedown", function(){
+											textobloco = 1;
+											if (popd == false)
+												popd = true;
+										});	
+
+	carro.addEventListener("mouseover",  function(){
+											carro.cursor = "pointer";
+										});
+	//carro.addEventListener("mousedown", function(){
+	//										textobloco = 16;
+	//										if (popd == false)
+	//											popd = true;
+	//									});	
+	frc.addEventListener("mouseover",  function(){
+											frc.cursor = "pointer";
+										});
+	//frc.addEventListener("mousedown", function(){
+	//										textobloco = 17;
+	//										if (popd == false)
+	//											popd = true;
+	//									});	
+	md.addEventListener("mouseover",  function(){
+											md.cursor = "pointer";
+										});
+	//md.addEventListener("mousedown", function(){
+	//										textobloco = 18;
+	//										if (popd == false)
+	//											popd = true;
+	//									});	
+	pl.addEventListener("mouseover",  function(){
+											pl.cursor = "pointer";
+										});
+	//pl.addEventListener("mousedown", function(){
+	//										textobloco = 19;
+	//										if (popd == false)
+	//											popd = true;
+	//									});	
+
+	camforca.addEventListener("mouseover",  function(){
+											camforca.cursor = "pointer";
+										});
+	//camforca.addEventListener("mousedown", function(){
+	//										textobloco = 20;
+	//										if (popd == false)
+	//											popd = true;
+	//									});	
+	eletro.addEventListener("mouseover",  function(){
+											eletro.cursor = "pointer";
+										});
+	//eletro.addEventListener("mousedown", function(){
+	//										textobloco = 21;
+	//										if (popd == false)
+	//											popd = true;
+	//									});	
+	lobo.addEventListener("mouseover",  function(){
+											lobo.cursor = "pointer";
+										});
+	//lobo.addEventListener("mousedown", function(){
+	//										textobloco = 22;
+	//										if (popd == false)
+	//											popd = true;
+	//									});	
+
+	//___________________________________________________________________________________________________________________________
+
+	
+	//controle de estado das paginas
+	var pagina = 0;				//página
+	var opcao = null;			//parte do aplicativo
+	var aberto = false;			//controle do menu
+	var selecionada = null;		//controle das alas
+	var alabateria = 4;			//controle da bateria
+	var popd = false;			//controle do popup do desfile
+	var textobloco = 0;			//controla o que tem no popup
+	var scolabore = 0;
+
+	//ativa evento do mouse
+	stage.enableMouseOver();
+
+	btsom.addEventListener("mouseover",  function(){
+											btsom.cursor = "pointer";
+										});
+
+
+	ajudaf.addEventListener("mousedown",  function(){
+											scolabore = 1;
+										});
+	doeacess.addEventListener("mousedown",  function(){
+											scolabore = 2;
+										});
+	voluntarie.addEventListener("mousedown",  function(){
+											scolabore = 3;
+										});
+
+
+
+
+	menu.addEventListener("mousedown",  function(){
+											if (aberto == true)
+												aberto = false;
+											else
+												aberto = true;
+										});
+	menu.addEventListener("mouseover",  function(){
+											menu.cursor = "pointer";
+										});
+	setamenu.addEventListener("mousedown",  function(){
+											if (aberto == true)
+												aberto = false;
+											else
+												aberto = true;
+										});
+	setamenu.addEventListener("mouseover",  function(){
+											setamenu.cursor = "pointer";
+										});
+
+
+	//botão de fechar clicável
+	fecha.addEventListener("mousedown", function(){
+											//verifica se as alas tão abertas. se sim, fecha elas. se não, fecha tudo
+											if (opcao == 2 && selecionada == 0 || selecionada == 1 || selecionada == 2 || selecionada == 3)
+												selecionada = null;
+											else
+												opcao = null;
+											scolabore = 0;
+										})
+	fecha.addEventListener("mouseover", function(){
+											fecha.cursor = "pointer";
+										});
+
+	fechap.addEventListener("mousedown", function(){
+											if (popd == true)
+												popd = false;
+										})
+	fechap.addEventListener("mouseover", function(){
+											fechap.cursor = "pointer";
+										});
+
+	btsom.addEventListener("mousedown", function(){
+											if (geral == false)
+												geral = true;
+											else
+												geral = false;
+										})
+
+	//logo clicável
+	logo.addEventListener("mousedown", 	function(){
+											if (opcao == 0)
+												opcao = null;
+											else
+												opcao = 0;
+										})
+	logo.addEventListener("mouseover", 	function(){
+											logo.cursor = "pointer";
+										})
+
+
+	//botoes das alas
+	pa11.addEventListener("mousedown", 	function(){
+											selecionada = 0;
+										})
+	pa11.addEventListener("mouseover", 	function(){
+											pa11.cursor = "pointer";
+										})
+	pa12.addEventListener("mousedown", 	function(){
+											selecionada = 1;
+										})
+	pa12.addEventListener("mouseover", 	function(){
+											pa12.cursor = "pointer";
+										})
+	pa13.addEventListener("mousedown", 	function(){
+											selecionada = 2;
+										})
+	pa13.addEventListener("mouseover", 	function(){
+											pa13.cursor = "pointer";
+										})
+	pa14.addEventListener("mousedown", 	function(){
+											selecionada = 3;
+										})
+	pa14.addEventListener("mouseover", 	function(){
+											pa14.cursor = "pointer";
+										})
+	esq.addEventListener("mousedown", 	function(){
+											selecionada = selecionada - 1;
+										})
+	esq.addEventListener("mouseover", 	function(){
+											esq.cursor = "pointer";
+										})
+	dir.addEventListener("mousedown", 	function(){
+											selecionada = selecionada + 1;
+										})
+	dir.addEventListener("mouseover", 	function(){
+											dir.cursor = "pointer";
+										})
+
+
+	
+	
+
+	//botões do menu
+	btbloco.gotoAndPlay("normal");
+	btalas.gotoAndPlay("normal");
+	btcolabore.gotoAndPlay("normal");
+
+	btbloco.addEventListener("mouseover", function(){
+											btbloco.gotoAndPlay("over");
+											btbloco.cursor = "pointer";
+										});
+	btbloco.addEventListener("mouseout", function(){
+											btbloco.gotoAndPlay("normal");
+										});
+	btbloco.addEventListener("mousedown", function(){
+											opcao = 3;
+											aberto = false;
+										});
+
+	btalas.addEventListener("mouseover", function(){
+											btalas.gotoAndPlay("over");
+											btalas.cursor = "pointer";
+										});
+	btalas.addEventListener("mouseout", function(){
+											btalas.gotoAndPlay("normal");
+										});
+	btalas.addEventListener("mousedown", function(){
+											opcao = 2;
+											aberto = false;
+										});
+
+	btcolabore.addEventListener("mouseover", function(){
+											btcolabore.gotoAndPlay("over");
+											btcolabore.cursor = "pointer";
+										});
+	btcolabore.addEventListener("mouseout", function(){
+											btcolabore.gotoAndPlay("normal");
+										});
+	btcolabore.addEventListener("mousedown", function(){
+											opcao = 1;
+											aberto = false;
+										});				
+
+
+	/* teste de filtros
+
+	var blurf = new createjs.BlurFilter(5, 5, 1);
+
+	fundo.filters = [blurf];
+	fundo.cache(0, 0, 800, 600);*/
+
+	//adiciona itens na tela
+	function adi(){
+		//baseado na pagina
+		switch(pagina){
+			//inicio
+			case 0:
+				stage.addChild(fundoinicio);
+				stage.addChild(confete);
+				stage.addChild(logoinicio);
+				stage.addChild(doidoscarnaval);
+				stage.addChild(conscientizazao);
+				window.setTimeout(	function(){
+										pagina = 1;
+									}, 4000);
+				break;
+			//tela base
+			case 1:
+								//stage.addChild(txtfinanceira);
+				stage.addChild(fundo);
+				stage.addChild(logo);
+				stage.addChild(menu);
+				stage.addChild(setamenu);
+				stage.addChild(btsom);
+				switch(alabateria){
+					case 0:
+						stage.removeChild(bpm);
+						stage.removeChild(dpm);
+						stage.removeChild(esqm);
+						stage.removeChild(spm);
+						stage.removeChild(tocm);
+						stage.removeChild(carro);
+						stage.removeChild(frc);
+						stage.removeChild(md);
+						stage.removeChild(pl);
+						stage.removeChild(camforca);
+						stage.removeChild(eletro);
+						stage.removeChild(lobo);
+						stage.removeChild(enf);
+						stage.addChild(bama);
+						stage.addChild(bazul);
+						stage.addChild(dep);
+						stage.addChild(sp);
+						stage.addChild(esqa);
+						stage.addChild(esqr);
+						stage.addChild(ans);
+						if (bonecatela == true)
+							stage.addChild(boneca);
+						else
+							stage.removeChild(boneca);
+						break;
+					case 1:
+						stage.removeChild(ans);
+						stage.removeChild(bama);
+						stage.removeChild(bazul);
+						stage.removeChild(dep);
+						stage.removeChild(esqa);
+						stage.removeChild(esqr);
+						stage.removeChild(sp);
+						stage.removeChild(carro);
+						stage.removeChild(frc);
+						stage.removeChild(md);
+						stage.removeChild(pl);
+						stage.removeChild(camforca);
+						stage.removeChild(eletro);
+						stage.removeChild(lobo);
+						stage.removeChild(enf);
+						stage.removeChild(mariaa);
+						stage.removeChild(ze);
+						stage.addChild(bpm);
+						stage.addChild(dpm);
+						stage.addChild(esqm);
+						stage.addChild(spm);
+						stage.addChild(tocm);
+						break;
+					case 2:
+						stage.removeChild(ans);
+						stage.removeChild(bama);
+						stage.removeChild(bazul);
+						stage.removeChild(dep);
+						stage.removeChild(esqa);
+						stage.removeChild(esqr);
+						stage.removeChild(sp);
+						stage.removeChild(bpm);
+						stage.removeChild(dpm);
+						stage.removeChild(esqm);
+						stage.removeChild(spm);
+						stage.removeChild(tocm);
+						stage.removeChild(camforca);
+						stage.removeChild(eletro);
+						stage.removeChild(lobo);
+						stage.removeChild(mariaa);
+						stage.removeChild(ze);
+						stage.addChild(frc);
+						stage.addChild(carro);
+						stage.addChild(enf);
+						stage.addChild(enf2);
+						stage.addChild(md);
+						stage.addChild(pl);
+						break;
+					case 3:
+						stage.removeChild(ans);
+						stage.removeChild(bama);
+						stage.removeChild(bazul);
+						stage.removeChild(dep);
+						stage.removeChild(esqa);
+						stage.removeChild(esqr);
+						stage.removeChild(sp);
+						stage.removeChild(bpm);
+						stage.removeChild(dpm);
+						stage.removeChild(esqm);
+						stage.removeChild(spm);
+						stage.removeChild(tocm);
+						stage.removeChild(frc);
+						stage.removeChild(md);
+						stage.removeChild(pl);
+						stage.removeChild(enf);
+						stage.removeChild(mariaa);
+						stage.removeChild(ze);
+						stage.addChild(eletro);
+						stage.addChild(eletro1);
+						stage.addChild(eletro2);
+						stage.addChild(lobo);
+						stage.addChild(lobo1);
+						stage.addChild(lobo2);
+						stage.addChild(camforca);
+						stage.addChild(camforca1);
+						stage.addChild(camforca2);
+						break;
+					case 4:
+						stage.removeChild(ans);
+						stage.removeChild(bama);
+						stage.removeChild(bazul);
+						stage.removeChild(dep);
+						stage.removeChild(esqa);
+						stage.removeChild(esqr);
+						stage.removeChild(sp);
+						stage.removeChild(bpm);
+						stage.removeChild(dpm);
+						stage.removeChild(esqm);
+						stage.removeChild(spm);
+						stage.removeChild(tocm);
+						stage.removeChild(frc);
+						stage.removeChild(md);
+						stage.removeChild(pl);
+						stage.removeChild(enf);
+						stage.removeChild(ans);
+						stage.removeChild(bama);
+						stage.removeChild(bazul);
+						stage.removeChild(dep);
+						stage.removeChild(esqa);
+						stage.removeChild(esqr);
+						stage.removeChild(sp);
+						stage.removeChild(bpm);
+						stage.removeChild(dpm);
+						stage.removeChild(esqm);
+						stage.removeChild(spm);
+						stage.removeChild(tocm);
+						stage.removeChild(camforca);
+						stage.removeChild(eletro);
+						stage.removeChild(lobo);
+						stage.removeChild(ans);
+						stage.removeChild(bama);
+						stage.removeChild(bazul);
+						stage.removeChild(dep);
+						stage.removeChild(esqa);
+						stage.removeChild(esqr);
+						stage.removeChild(sp);
+						stage.removeChild(carro);
+						stage.removeChild(frc);
+						stage.removeChild(md);
+						stage.removeChild(pl);
+						stage.removeChild(camforca);
+						stage.removeChild(eletro);
+						stage.removeChild(lobo);
+						stage.removeChild(enf);
+						stage.addChild(mariaa);
+						stage.addChild(ze);
+				}
+				//nas opções
+				switch (opcao){
+					case 0:
+						stage.removeChild(txtroupas);
+						stage.removeChild(txtvoluntarie);
+						stage.removeChild(txtfinanceira);
+						popd = false;
+						stage.removeChild(pa11);
+						stage.removeChild(pa12);
+						stage.removeChild(pa13);
+						stage.removeChild(pa14);
+						stage.removeChild(pa21);
+						stage.removeChild(pa22);
+						stage.removeChild(pa23);
+						stage.removeChild(pa24);
+						stage.removeChild(esq);
+						stage.removeChild(dir);
+						stage.addChild(blur);
+						stage.addChild(abas);
+						stage.addChild(sobre);
+						stage.addChild(fecha);
+						break;
+					case 1:
+						popd = false;
+						stage.removeChild(pa11);
+						stage.removeChild(pa12);
+						stage.removeChild(pa13);
+						stage.removeChild(pa14);
+						stage.removeChild(pa21);
+						stage.removeChild(pa22);
+						stage.removeChild(pa23);
+						stage.removeChild(pa24);
+						stage.removeChild(esq);
+						stage.removeChild(dir);
+						stage.addChild(blur);
+						stage.addChild(abas);
+						stage.addChild(ajudaf);
+						stage.addChild(barrat);
+						stage.addChild(colaboree);
+						stage.addChild(doeacess);
+						stage.addChild(voluntarie);
+						stage.addChild(fecha);
+						switch (scolabore){
+							case 0:
+								stage.removeChild(txtroupas);
+								stage.removeChild(txtvoluntarie);
+								stage.removeChild(txtfinanceira);
+								break;
+							case 1:
+								stage.removeChild(txtroupas);
+								stage.removeChild(txtvoluntarie);
+								stage.addChild(txtfinanceira);
+								break;
+							case 2:
+								stage.removeChild(txtvoluntarie);
+								stage.removeChild(txtfinanceira);
+								stage.addChild(txtroupas);
+								break;
+							case 3:
+								stage.removeChild(txtroupas);
+								stage.removeChild(txtfinanceira);
+								stage.addChild(txtvoluntarie);
+								break;
+						}
+						break;
+					case 2:
+						stage.removeChild(txtroupas);
+						stage.removeChild(txtvoluntarie);
+						stage.removeChild(txtfinanceira);
+						stage.addChild(blur);
+						popd = false;
+						stage.addChild(abas);
+						stage.addChild(nomea);
+						stage.addChild(pa11);
+						stage.addChild(pa12);
+						stage.addChild(pa13);
+						stage.addChild(pa14);
+						stage.addChild(fecha);
+						stage.addChild(lbl1);
+						stage.addChild(lbl2);
+						stage.addChild(lbl3);
+						stage.addChild(lbl4);
+						switch (selecionada){
+							case 0:
+								stage.removeChild(nomea);
+								stage.removeChild(pa11);
+								stage.removeChild(pa12);
+								stage.removeChild(pa13);
+								stage.removeChild(pa14);
+						stage.removeChild(lbl1);
+						stage.removeChild(lbl2);
+						stage.removeChild(lbl3);
+						stage.removeChild(lbl4);
+								stage.addChild(pa21);
+								stage.addChild(esq);
+								stage.addChild(dir);
+								stage.addChild(txtala1);
+								stage.addChild(lbl5);
+								break;
+							case 1:
+								stage.removeChild(nomea);
+								stage.removeChild(pa11);
+								stage.removeChild(pa12);
+								stage.removeChild(pa13);
+								stage.removeChild(pa14);
+						stage.removeChild(lbl1);
+						stage.removeChild(lbl2);
+						stage.removeChild(lbl3);
+						stage.removeChild(lbl4);
+								stage.addChild(pa22);
+								stage.addChild(esq);
+								stage.addChild(dir);
+								stage.addChild(txtala2);
+								stage.addChild(lbl6);
+								break;
+							case 2:
+								stage.removeChild(nomea);
+								stage.removeChild(pa11);
+								stage.removeChild(pa12);
+								stage.removeChild(pa13);
+								stage.removeChild(pa14);
+						stage.removeChild(lbl1);
+						stage.removeChild(lbl2);
+						stage.removeChild(lbl3);
+						stage.removeChild(lbl4);
+								stage.addChild(pa23);
+								stage.addChild(esq);
+								stage.addChild(dir);
+								stage.addChild(txtala3);
+								stage.addChild(lbl7);
+								break;
+							case 3:
+								stage.removeChild(nomea);
+								stage.removeChild(pa11);
+								stage.removeChild(pa12);
+								stage.removeChild(pa13);
+								stage.removeChild(pa14);
+						stage.removeChild(lbl1);
+						stage.removeChild(lbl2);
+						stage.removeChild(lbl3);
+						stage.removeChild(lbl4);
+								stage.addChild(pa24);
+								stage.addChild(esq);
+								stage.addChild(dir);
+								stage.addChild(txtala4);
+								stage.addChild(lbl8);
+								break;
+						}
+						break;
+					case 3:
+						stage.removeChild(txtroupas);
+						stage.removeChild(txtvoluntarie);
+						stage.removeChild(txtfinanceira);
+						stage.removeChild(pa11);
+						stage.removeChild(pa12);
+						stage.removeChild(pa13);
+						stage.removeChild(pa14);
+						stage.removeChild(pa21);
+						stage.removeChild(pa22);
+						stage.removeChild(pa23);
+						stage.removeChild(pa24);
+						stage.removeChild(esq);
+						stage.removeChild(dir);
+						stage.addChild(blur);
+						popd = false;
+						stage.addChild(abas);
+						stage.addChild(fecha);
+						stage.addChild(obloco);
+						stage.addChild(txtbloco1);
+						stage.addChild(pbs[pbcontrole]);
+						break;
+					default:
+						stage.removeChild(txtroupas);
+						stage.removeChild(txtvoluntarie);
+						stage.removeChild(txtfinanceira);
+						opcao = null;
+						stage.removeChild(fecha);
+						stage.removeChild(pa11);
+						stage.removeChild(pa12);
+						stage.removeChild(pa13);
+						stage.removeChild(pa14);
+						stage.removeChild(pa21);
+						stage.removeChild(pa22);
+						stage.removeChild(pa23);
+						stage.removeChild(pa24);
+						stage.removeChild(esq);
+						stage.removeChild(dir);
+				}
+				if (popd == true){
+					stage.addChild(popupdesfile);
+					stage.addChild(fechap);
+					if(textobloco == 11)
+						stage.addChild(txtbipolar);
+					else
+						stage.removeChild(txtbipolar);
+					if(textobloco == 12)
+						stage.addChild(txtdepressao);
+					else
+						stage.removeChild(txtdepressao);
+					if(textobloco == 13)
+						stage.addChild(txtesq);
+					else
+						stage.removeChild(txtesq);
+					if(textobloco == 14)
+						stage.addChild(txtpanico);
+					else
+						stage.removeChild(txtpanico);
+					if(textobloco == 15)
+						stage.addChild(txttoc);
+					else
+						stage.removeChild(txttoc);
+					if(textobloco == 1)
+						stage.addChild(txtmaria);
+					else
+						stage.removeChild(txtmaria);
+					if(textobloco == 2)
+						stage.addChild(txtze);
+					else
+						stage.removeChild(txtze);
+				}
+				else{
+					stage.removeChild(popupdesfile);
+					stage.removeChild(fechap);
+				}
+				//menu
+				if (aberto == true){
+					stage.addChild(menuaberto);
+					stage.addChild(btbloco);
+					stage.addChild(btalas);
+					stage.addChild(btcolabore);
+					stage.addChild(menu);
+					stage.removeChild(setamenu);
+				}
+				else{
+					stage.removeChild(menuaberto);
+					stage.removeChild(btbloco);
+					stage.removeChild(btalas);
+					stage.removeChild(btcolabore);
+				}
+				if (bonecotela == true)
+					stage.addChild(boneco);
+				else
+					stage.removeChild(boneco);
+				break;
+			default:
+				pagina = 0;
+		}
+	}		
+
+	function posicao(){
+		//pagina inicial
+		logoinicio.x = -500;
+		logoinicio.y = -350;
+		fundoinicio.x = 0;
+		fundoinicio.y = 0
+		confete.x = 0;
+		confete.y = 0;
+		doidoscarnaval.x = 0;
+		doidoscarnaval.y = 0;
+		conscientizazao.x = 0;
+		conscientizazao.y = 0;
+		fundoinicio.alpha = 0;
+		confete.alpha = 0;
+		doidoscarnaval.alpha = 0;
+		conscientizazao.alpha = 0;
+		//pagina 1
+		logo.x = 713;
+		logo.y = 534;
+		menu.x = 39;
+		menu.y = 40;
+		setamenu.x = 66;
+		setamenu.y = 123;
+		btsom.x = 759;
+		btsom.y = 16;
+		abas.x = 67;
+		abas.y = 159;
+		fecha.x = 698;
+		fecha.y = 170;
+		abas.x = 67;
+		abas.y = 159;
+		ajudaf.x = 150;
+		ajudaf.y = 313;
+		colaboree.x = 86;
+		colaboree.y = 180;
+		doeacess.x = 352;
+		doeacess.y = 313;
+		voluntarie.x = 547;
+		voluntarie.y = 313;
+		barrat.x = 100;
+		barrat.y = 230
+		fecha.x = 698;
+		fecha.y = 170;
+		abas.x = 67;
+		abas.y = 159;
+		nomea.x = 86;
+		nomea.y = 180;
+		pa11.x = 96;
+		pa11.y = 284;
+		pa12.x = 256;
+		pa12.y = 284;
+		pa13.x = 413;
+		pa13.y = 284;
+		pa14.x = 571;
+		pa14.y = 284;
+		fecha.x = 698;
+		fecha.y = 170;
+		fechap.x = 390;
+		fechap.y = 165;
+		//esquerda
+		esq.x = 85;
+		esq.y = 350;
+		//direita
+		dir.x = 700;
+		dir.y = 350;
+		//placeholder grande
+		pa21.x = 135;
+		pa21.y = 225;
+		pa22.x = 135;
+		pa22.y = 225;
+		pa23.x = 135;
+		pa23.y = 225;
+		pa24.x = 135;
+		pa24.y = 225;
+		menuaberto.x = 38;
+		menuaberto.y = 89;
+		btbloco.x = 55;
+		btbloco.y = 124;
+		btalas.x = 67;
+		btalas.y = 172;
+		btcolabore.x = 52;
+		btcolabore.y = 219;
+
+		//bloco
+		for (var i = 0; i < 5; i++){
+			pbs[i].x = 134;
+			pbs[i].y = 231;
+		}
+		obloco.x = 85;
+		obloco.y = 180;
+
+		//popup do desfile
+		popupdesfile.x = 30;
+		popupdesfile.y = 150;
+	}
+
+	//controle dos personagens
+	var andando = false;
+
+	document.body.addEventListener("keydown",   function(teclas){
+													switch(teclas.keyCode){
+														case 39:
+															andando = true;
+															switch (alabateria){
+																case 0:
+																	createjs.Tween.get(ans).to({x: -250, y:630}, 2000);
+																	createjs.Tween.get(bama).to({x: -50, y:570}, 2300);
+																	createjs.Tween.get(bazul).to({x: -283, y:610}, 2300);
+																	createjs.Tween.get(dep).to({x: -133, y:620}, 2300);
+																	createjs.Tween.get(esqa).to({x: -366, y:660}, 2300);
+																	createjs.Tween.get(esqr).to({x: -213, y:670}, 2300);
+																	createjs.Tween.get(sp).to({x: -449, y:710}, 2300);
+																	break;
+																case 2:
+																	createjs.Tween.get(carro).to({x: -200, y:560}, 2300);
+																	createjs.Tween.get(frc).to({x: -310, y:570}, 2300);
+																	createjs.Tween.get(md).to({x: -283, y:640}, 2300);
+																	createjs.Tween.get(pl).to({x: -133, y:660}, 2300);
+																	createjs.Tween.get(enf).to({x: -330, y:620}, 2300);
+																	createjs.Tween.get(enf2).to({x: -190, y:680}, 2300);
+																	break;
+																case 3:
+																	createjs.Tween.get(camforca).to({x: -330, y:560}, 2300);
+																	createjs.Tween.get(eletro).to({x: -290, y:560}, 2300);
+																	createjs.Tween.get(lobo).to({x: -283, y:560}, 2300);
+																	createjs.Tween.get(camforca1).to({x: -290, y:610}, 2300);
+																	createjs.Tween.get(eletro1).to({x: -260, y:610}, 2300);
+																	createjs.Tween.get(lobo1).to({x: -283, y:610}, 2300);
+																	createjs.Tween.get(camforca2).to({x: -260, y:650}, 2300);
+																	createjs.Tween.get(eletro2).to({x: -230, y:650}, 2300);
+																	createjs.Tween.get(lobo2).to({x: -283, y:650}, 2300);
+																	break;
+																case 4:
+																	createjs.Tween.get(ze).to({x: -200, y:560}, 2300);
+																	createjs.Tween.get(mariaa).to({x: -50, y:570}, 2300);
+																	break;
+															}
+															window.setTimeout(	function(){
+																switch(alabateria){
+																	case 0:
+																		alabateria = 2;
+																		break;
+																	case 2:
+																		alabateria = 4;
+																		break;
+																	case 3:
+																		alabateria = 0;
+																		break;
+																	case 4:
+																		alabateria = 3;
+																		break;
+																}
+																andando = false;
+															}, 2500);
+															break;
+														case 37:
+															andando = true;
+															switch (alabateria){
+																case 0:
+																	createjs.Tween.get(ans).to({x: 1043, y:-230}, 1700);
+																	createjs.Tween.get(bama).to({x: 1143, y:-220}, 1700);
+																	createjs.Tween.get(bazul).to({x: 970, y:-180}, 1700);
+																	createjs.Tween.get(dep).to({x: 1070, y:-170}, 1700);
+																	createjs.Tween.get(esqa).to({x: 897, y:-130}, 1700);
+																	createjs.Tween.get(esqr).to({x: 997, y:-120}, 1700);
+																	createjs.Tween.get(sp).to({x: 824, y:-60}, 1700);
+																	break;
+																case 2:
+																	createjs.Tween.get(carro).to({x: 1043, y:-230}, 1700);
+																	createjs.Tween.get(frc).to({x: 1143, y:-220}, 1700);
+																	createjs.Tween.get(md).to({x: 970, y:-180}, 1700);
+																	createjs.Tween.get(pl).to({x: 1070, y:-170}, 1700);
+																	createjs.Tween.get(enf).to({x: 897, y:-130}, 1700);
+																	break;
+																case 3:
+																	createjs.Tween.get(camforca).to({x: 1043, y:-230}, 1700);
+																	createjs.Tween.get(eletro).to({x: 1143, y:-220}, 1700);
+																	createjs.Tween.get(lobo).to({x: 970, y:-180}, 1700);
+																	createjs.Tween.get(camforca1).to({x: 1133, y:-282}, 1700);
+																	createjs.Tween.get(eletro1).to({x: 1216, y:-256}, 1700);
+																	createjs.Tween.get(lobo1).to({x: 1055, y:-222}, 1700);
+																	createjs.Tween.get(camforca2).to({x: 1124, y:-276}, 1700);
+																	createjs.Tween.get(eletro2).to({x: 1224, y:-257}, 1700);
+																	createjs.Tween.get(lobo2).to({x: 1052, y:-232}, 1700);
+																	break;
+																case 4:
+																	createjs.Tween.get(ze).to({x: 1043, y:-230}, 1500);
+																	createjs.Tween.get(mariaa).to({x: 1143, y:-220}, 1500);
+																	break;
+															}
+															window.setTimeout(	function(){
+																switch (alabateria){
+																	case 0:
+																		alabateria = 3;
+																		break;
+																	case 2:
+																		alabateria = 0;
+																		break;
+																	case 3:
+																		alabateria = 4;
+																		break;
+																	case 4:
+																		alabateria = 2;
+																		break;
+																}
+																andando = false;
+															}, 1800);
+															break;
+													}
+												});
+
+	posicao();
+
+	createjs.Ticker.addEventListener("tick", handleTick);
+
+	var diftempo = createjs.Ticker.getTime();
+	var tempoboneca = diftempo;
+	var tempoboneco = diftempo;
+
+	var bonecotela = false;
+	var bonecatela = false;
+
+	//atualiza a tela
+	function handleTick(event){
+		if (createjs.Ticker.getTime() - diftempo >= 5000){
+			diftempo = createjs.Ticker.getTime();
+			pbcontrole = pbcontrole + 1;
+			if (bonecotela == true)
+				bonecotela = false;
+			if (bonecatela == true)
+				bonecatela = false;
+		}
+
+		if (createjs.Ticker.getTime() - tempoboneco >= 18000){
+			tempoboneco = createjs.Ticker.getTime();
+			if (bonecotela == false)
+				bonecotela = true;
+		}
+
+		if (createjs.Ticker.getTime() - tempoboneca >= 8000){
+			tempoboneca = createjs.Ticker.getTime();
+			if (bonecatela == false)
+				bonecatela = true;
+		}
+
+		createjs.Tween.get(logoinicio).to({x: 0, y:0}, 2000);
+		createjs.Tween.get(fundoinicio).to({alpha: 1}, 1500);
+		createjs.Tween.get(doidoscarnaval).wait(2000).to({alpha: 1}, 900);
+		createjs.Tween.get(conscientizazao).wait(2500).to({alpha: 1}, 1200);
+		createjs.Tween.get(confete).to({alpha: 1}, 2000);
+		if (selecionada != null && selecionada > 3)
+			selecionada = 0;
+		if (selecionada != null && selecionada < 0)
+			selecionada = 3;
+		if (alabateria < 0)
+			alabateria = 4;
+		if (alabateria > 4)
+			alabateria = 0;
+
+		if(geral == true)
+			btsom.gotoAndPlay("csom");
+		else
+			btsom.gotoAndPlay("ssom");
+
+		if (pbcontrole > 4)
+			pbcontrole = 0;
+		
+		//controle dos personaagens
+		if (andando == false){
+			ans.x = 468;
+			ans.y = 279;
+			bama.x = 727;
+			bama.y = 129;
+			bazul.x = 637;
+			bazul.y = 86;
+			dep.x = 656;
+			dep.y = 178;
+			esqa.x = 471;
+			esqa.y = 178;
+			esqr.x = 559;
+			esqr.y = 237;
+			sp.x = 550;
+			sp.y = 135;
+			//monstros
+			bpm.x = 643;
+			bpm.y = 100;
+			dpm.x = 743;
+			dpm.y = 110;
+			esqm.x = 570;
+			esqm.y = 150;
+			spm.x = 670;
+			spm.y = 160;
+			tocm.x = 497;
+			tocm.y = 200;
+			//reforma
+			carro.x = 600;
+			carro.y = 150;
+			enf.x = 427;
+			enf.y = 200;
+			enf2.x = 570;
+			enf2.y = 280;
+			frc.x = 477;
+			frc.y = 120;
+			md.x = 477;
+			md.y = 250;
+			pl.x = 700;
+			pl.y = 200;
+			//tratamentos
+			camforca.x = 430;
+			camforca.y = 138;
+			camforca1.x = 520;
+			camforca1.y = 190;
+			camforca2.x = 601;
+			camforca2.y = 236;
+			eletro.x = 573;
+			eletro.y = 50;
+			eletro1.x = 646;
+			eletro1.y = 86;
+			eletro2.x = 727;
+			eletro2.y = 123;
+			lobo.x = 498;
+			lobo.y = 100;
+			lobo1.x = 583;
+			lobo1.y = 142;
+			lobo2.x = 665;
+			lobo2.y = 194;
+			//personagens principais
+			mariaa.x = 663;
+			mariaa.y = 126;
+			ze.x = 592;
+			ze.y = 93;
+		}
+
+		somgeral();
+		adi();		
+		stage.update();
+	}
+
+
+</script>
+
+</body>
+</html>

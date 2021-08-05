@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>tela inicial</title>
+</head>
+<body>
+
+<canvas id="quadro" width="800" height="600"></canvas>
+<script src="https://code.createjs.com/createjs-2015.05.21.min.js"></script>
+<script >
+	
+	var stage = new createjs.Stage("quadro");
+	var fundo = new createjs.Bitmap("bgarquibancada.png");
+	var confete = new createjs.Bitmap("confete.png");
+	var doidoscarnaval = new createjs.Bitmap("doidosporcarnaval.png");
+	var logo = new createjs.Bitmap("logodoidosporcarnaval.png");
+	var conscientizazao = new createjs.Bitmap("umdesfiledeconscientizacao.png");
+	
+
+	var pagina = 0;
+
+	function adi(){
+		for (var i=0; i<2; i++){
+			switch(pagina){
+				case 0:
+					stage.addChild(fundo);
+					stage.addChild(confete);
+					stage.addChild(logo);
+					stage.addChild(doidoscarnaval);
+					stage.addChild(conscientizazao);
+				default:
+					pagina = 0;
+			}
+		}
+	}
+
+	adi();
+
+	createjs.Ticker.addEventListener("tick", handleTick);	
+
+	function handleTick(){							
+		stage.update();
+	}
+
+
+</script>
+
+</body>
+</html>
